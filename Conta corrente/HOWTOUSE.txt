@@ -1,0 +1,40 @@
+============================================================
+       INSTRUÇÕES DE USO - SISTEMA CONTA CORRENTE V3.0
+============================================================
+
+1. REQUISITOS DO SISTEMA (Pop!_OS / Ubuntu)
+-------------------------------------------
+Antes de rodar pela primeira vez, instale as dependências:
+> sudo apt update
+> sudo apt install redis-server python3-redis python3-matplotlib
+
+2. INICIALIZAÇÃO DO SERVIDOR DE CACHE
+-------------------------------------
+O sistema utiliza Redis para processamento de gráficos. 
+Certifique-se de que o serviço está ativo:
+> sudo systemctl start redis-server
+
+3. COMO EXECUTAR O APLICATIVO
+-----------------------------
+Abra o terminal na pasta do projeto e execute:
+> python3 conta.py
+
+4. FUNCIONALIDADES PRINCIPAIS
+-----------------------------
+- NOVA TRANSAÇÃO: Clique no botão verde e use '+' para entradas 
+  ou '-' para saídas. Escolha uma categoria na lista ou crie 
+  uma nova.
+- EDITAR/APAGAR: Selecione um item em qualquer uma das tabelas 
+  e clique no botão correspondente.
+- GRÁFICOS (REDIS): 
+  * 'Gráfico Gastos': Gera um gráfico de pizza das saídas.
+  * 'Gráfico Ganhos': Gera um gráfico de pizza das entradas.
+
+5. SOLUÇÃO DE PROBLEMAS
+-----------------------
+Se o comando 'python3 conta.py' não abrir nada e voltar para 
+a linha de comando sem erro:
+1. Verifique se o Redis está rodando: 'redis-cli ping' (deve retornar PONG).
+2. Verifique se não há um processo travado: 'pkill -f conta.py'.
+3. Verifique o caminho do banco de dados (CAMINHO_DB) no código.
+============================================================

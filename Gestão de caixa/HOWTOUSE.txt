@@ -1,0 +1,3 @@
+terminal:
+
+python3 "/home/lucaatanazio/Documentos/Projetos/Gestão de caixa/padariagostosin.py"
