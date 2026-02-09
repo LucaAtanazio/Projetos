@@ -11,7 +11,7 @@ const CORES = {
     PLAYER: "#00FA9A", SPARX: "#FF69B4", LINHAS: "#FFE4B5",
     MORTE: "#FF0000", FUNDO: "#000044", AREA: "#4169E1", HUD: "#FFFFFF"
 };
-const ROWS = 80, COLS = 120; // Reduzi levemente a grade para maior estabilidade no floodFill
+const ROWS = 80, COLS = 120; 
 const cellW = canvas.width / COLS, cellH = canvas.height / ROWS;
 
 let player, qix, sparx, grid, gameState = "START_MENU";
@@ -61,38 +61,34 @@ window.onkeydown = (e) => {
 };
 window.onkeyup = (e) => keys[e.code] = false;
 
-// --- LÓGICA DE PREENCHIMENTO (SOLUÇÃO DO BUG) ---
+// --- LÓGICA DE PREENCHIMENTO ---
 
 
 
 function finalizeCut() {
-    // 1. O rastro (2) vira borda (1)
     replaceValueInGrid(2, 1);
     
-    // Pegamos a posição atual do Qix convertida para a grade
+
     let qx = Math.floor(qix.x / cellW);
     let qy = Math.floor(qix.y / cellH);
 
-    // 2. Identificar áreas vazias
-    // Usamos um valor temporário 4 para mapear onde o Qix está
-    // Primeiro, inundamos a área onde o Qix está a partir da posição dele
     if (grid[qy] && grid[qy][qx] === 0) {
         floodFill(qx, qy, 0, 4); 
     } else {
-        // Se o Qix estiver em cima de algo que não é 0 (raro), procura o 0 mais próximo
+
         encontrarEspacoVazioParaQix(qx, qy);
     }
 
-    // 3. Agora, qualquer 0 que sobrou NÃO contém o Qix e deve ser preenchido
+
     for (let r = 0; r < ROWS; r++) {
         for (let c = 0; c < COLS; c++) {
             if (grid[r][c] === 0) {
-                grid[r][c] = 3; // Preenche a ilha conquistada
+                grid[r][c] = 3; 
             }
         }
     }
 
-    // 4. Devolvemos a área do Qix (4) para vazio (0)
+
     replaceValueInGrid(4, 0);
     
     player.isDrawing = false;
@@ -125,8 +121,6 @@ function encontrarEspacoVazioParaQix(qx, qy) {
         }
     }
 }
-
-// --- RESTANTE DA LÓGICA ---
 
 function update() {
     if (gameState !== "PLAYING") return;
