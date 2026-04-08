@@ -1,0 +1,8 @@
+
+.virtualenvs/
+venv/
+__pycache__/
+
+*.csv
+*.pth
+*.png
