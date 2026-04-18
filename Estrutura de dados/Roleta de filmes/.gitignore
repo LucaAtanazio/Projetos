@@ -1,0 +1,9 @@
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Ambientes virtuais (caso o ia_master esteja dentro da pasta)
+ia_master/
