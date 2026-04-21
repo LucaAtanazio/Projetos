@@ -1,0 +1,5 @@
+teste/
+__pycache__/
+*.py[cod]
+.virtualenvs/
+venv/

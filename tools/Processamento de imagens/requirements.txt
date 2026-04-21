@@ -1,0 +1,6 @@
+Pillow
+pillow-heif    
+rawpy          
+svglib         
+reportlab
+pymupdf
