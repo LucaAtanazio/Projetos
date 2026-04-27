@@ -1,0 +1,21 @@
+# Ambientes Virtuais
+venv/
+.venv/
+env/
+bin/
+lib/
+share/
+
+# Dados de Usuário e Configurações Locais
+*.json
+!package.json # Caso futuramente use Node.js (opcional)
+
+# Caches de OCR e Python
+__pycache__/
+*.pyc
+.pytest_cache/
+ocr_cache.json
+
+# Sistema
+.DS_Store
+Thumbs.db
